@@ -1,0 +1,142 @@
+#nav-container {
+    position: fixed; /* Ensure the navbar stays fixed at the top of the viewport */
+    top: 0; /* Position it at the top */
+    left: 0; /* Position it at the left */
+    width: 100%; /* Take the full width of the viewport */
+    background-color: #ffffff;
+    z-index: 1000; /* Ensure it has a high enough z-index */
+    border-bottom: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 68px;
+    max-height: 64px;
+    height: 64px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+}
+
+.nav-bar{
+
+    width: 75%;
+    margin: auto;
+    height: 100%;
+    /* padding: 1.3rem; */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+   
+}
+#left{
+    display: flex;
+
+    width:85%;
+justify-content: space-between;
+   align-items: center;
+   /* flex-direction: row; */
+
+
+}
+#left-right-container{
+    /* position: relative; */
+ color: #141414;
+ display: flex;
+ justify-content: space-between;
+align-items: center;
+height: 100%;
+width: 60%;
+
+
+
+}
+.job-container{
+
+display: flex;
+justify-content: center;
+align-items: center;
+border-bottom: 2px solid #00000000;
+letter-spacing: 0;
+    font-weight: 540;
+    font-size: 14px;
+    line-height: 20px;
+    height: 100%;
+    letter-spacing: 0.5px;
+}
+.img-container{
+
+    width: 9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-container>a{
+    display: flex;
+    align-items: center;
+}
+.img-container>a>img{
+    width:100%;
+   
+    
+}
+.Upskilling-container{
+
+    display: flex;
+justify-content: center;
+align-items: center;
+letter-spacing: 0;
+font-weight: 540;
+ font-size: 14px;
+    line-height: 20px;
+    flex-direction: row;
+    position: relative;
+    height: 100%;
+   
+
+}
+.Upskilling-container>a{
+    position: relative;
+    top: 15%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.Upskilling-container>a>span{
+    font-weight: 540;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+}
+.Upskilling-container>a>div{
+    font-size: 10px;
+    background: linear-gradient(271deg, #8d38ea -3.53%, #3d85fe 76.43%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#right{
+
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    align-items: center;
+}
+#right>button{
+    padding: 11px 23px;
+    height: 48px;
+    border: 1px solid #141414;
+    color: var#141414;
+    border-radius: 8px;
+    background-color: unset;
+    cursor: pointer;
+    outline :none;
+    transition-duration: .5s;
+}
+#right>button>span{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+
+}
+#right>button:hover{
+    background-color: black;
+    color: white;
+}
