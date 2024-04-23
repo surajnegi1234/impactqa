@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import FormInput from './FormInput'
 import "../Styles/signup.css";
-
+import {toast} from "react-toastify";
 import axios from 'axios';
+import bcrypt from "bcryptjs";
+import{Link} from "react-router-dom"
 const Login = () => {
   const [loggedIn, setLoggedIn] = useState(false); 
   const [loginData, setLoginData] = useState({
@@ -34,35 +36,67 @@ const Login = () => {
 const handleChange = (e) => {
   setLoginData({ ...loginData, [e.target.name]: e.target.value });
 };
+
 const handleSubmit = (e) => {
   e.preventDefault();
-  axios.post('http://localhost:3000/login', loginData) // Assuming /login is the correct endpoint
+  validate(loginData);
+  axios.get('http://localhost:3000/user')
     .then((response) => {
-      if (response.data.success) {
-        // Handle successful login
-        setLoggedIn(true); // Set loggedIn state to true
-        localStorage.setItem('loggedIn', 'true'); // Set a flag for successful login
+      const user = response.data.find(user => user.username === loginData.username);
+      if (user) {
+        if(user.username===loginData.username)
+        if(user.password===loginData.password) { // Compare hashed passwords
+          toast.success("Login Successfully");
+          setLoggedIn(true);
+        } else {
+          setError('Invalid username or password');
+          alert("failed");
+        }
       } else {
-        setError('Invalid username or password');
+        setError('User not found');
+        alert("User not found");
       }
-    })
-    .catch(() => {
-      setError('Invalid username or password');
     });
 };
 
+const validate=(data)=>{
+  let results=true;
+  if (data.username===""||data.username===null){
+    results=false;
+    toast.warning("Please Enter Username")
+  }
+  if (data.password===""||data.password===null){
+    results=false;
+    toast.warning("Please Enter Password")
+  }
+  if (data.email===""||data.email===null){
+    results=false;
+    toast.warning("Please Enter Email")
+  }
+}
 return (
   <div id='form-container'>
     {loggedIn ? (
-      <p>You are already logged in!</p> // Render message if already logged in
+      <p>You are logged in</p> // Render message if already logged in
     ) : (
       <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         {inputs.map(item => (
-          <FormInput key={item.id} name={item.name} type={item.type} placeholder={item.placeholder} onChange={handleChange} />
+          <FormInput key={item.id} value={loginData[item.name]} name={item.name} type={item.type} placeholder={item.placeholder} onChange={handleChange} />
         ))}
-        {error && <p className="error">{error}</p>}
+        {error && <p className="errorMessage">{error}</p>}
         <button id="btn" type="submit">Login</button>
+        <div className="formLink">
+           <div className="login-span">
+           <span>New User?</span>
+            <Link to="/Signin" id="signbtn" style={{ textDecoration: "none" ,
+          
+          }}>
+              Sign-up
+            </Link>
+           </div>
+            
+          </div>
       </form>
     )}
   </div>

@@ -1,6 +1,25 @@
 {
-  "users": [
-    
-  ],
-  "loginDetails": []
+  "user": [
+    {
+      "id": "fff7",
+      "username": "Surajnegi",
+      "email": "negisuraj438@gmail.com",
+      "password": "Suraj123qwer@#$",
+      "confirmPassword": "Suraj123qwer@#$"
+    },
+    {
+      "id": "72d9",
+      "username": "Surajnegi",
+      "email": "negisuraj438@gmail.com",
+      "password": "Suraj123qwer@#$",
+      "confirmPassword": "Suraj123qwer@#$"
+    },
+    {
+      "id": "3ff4",
+      "username": "Surajnegi",
+      "email": "negisuraj438@gmail.com",
+      "password": "Suraj123qwer@#$",
+      "confirmPassword": "Suraj123qwer@#$"
+    }
+  ]
 }

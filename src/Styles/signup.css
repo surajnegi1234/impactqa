@@ -5,7 +5,7 @@
 }
 
 #form-container {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -122,13 +122,12 @@ form > #btn:hover {
 .facebook.google:hover {
   background-color: #000;
 }
-.errorMessage{
-   color: red;
-   font-size: 12px;
-   font-weight: bold;
-   
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
 }
-form>h2{
+form > h2 {
   font-size: 2rem;
-  font-family:  sans-serif;
+  font-family: sans-serif;
 }

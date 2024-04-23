@@ -5,8 +5,9 @@ import FormInput from "./FormInput";
 import { Link } from "react-router-dom";
 import Login from "./Login"
 import FacebookIcon from "@mui/icons-material/Facebook";
-
+import bcrypt from "bcryptjs";
 const Signup = () => {
+  const passwordInputRef= useRef();
   const [redirectToLogin,setredirectToLogin]=useState(false);
   const [inputValue, setInputValue] = useState({
     username: "",
@@ -55,6 +56,10 @@ const Signup = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setFormErrors(validate(inputValue));
+    const password = passwordInputRef.current ? passwordInputRef.current.value : '';
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const updatedInputValue = { ...inputValue, password: hashedPassword };
+    console.log(updatedInputValue);
   };
 
   const validate = (values) => {
@@ -85,7 +90,7 @@ const Signup = () => {
     }
 
     if (Object.keys(errors).length === 0) {
-      axios.post('http://localhost:3000/users', inputValue)
+      axios.post('http://localhost:3000/user', inputValue)
         .then(()=>{
           setredirectToLogin(true)
         })
@@ -108,6 +113,7 @@ const Signup = () => {
               value={inputValue[item.name]}
               onChange={changeHandler}
               errorMessage={formErrors[item.name]}
+              ref={item.name === "password" ? passwordInputRef : null} 
             />
           ))}
           <button id="btn" type="submit">
